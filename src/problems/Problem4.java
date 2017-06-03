@@ -11,16 +11,40 @@ public class Problem4 {
 	 * Find the largest palindrome made from the product of two 3-digit numbers.
 	 */
 	public static void main(String[] args) {
-		int times = 50;
-		long sum = 0;
-		
-		for (int i = 0; i < times; i++) {
-			sum += dumbCode();
-		}
-		
-		System.out.println("Mean time: " + (sum / times));
+		dumbCode();
+		dumbCode2();
 	}
 
+	
+	private static long dumbCode2() {
+		long t0 = System.nanoTime();
+		boolean foundit = false;
+		
+		int i = 999*999;
+		while (!foundit) {
+			if (Numbers.isPalindrome(i)) {
+				for (int j = 999; j > 100; j--) {
+					if (i % j == 0) {
+						int q = i / j;
+						if (q > 100 && q < 999) {
+							foundit = true;
+							break;
+						}
+					}
+				}
+			}
+			
+			i--;
+		}
+		
+		long tf = System.nanoTime();
+		
+		System.out.println("N: " + (i+1));
+		
+		return tf - t0;
+		
+	}
+	
 	// TODO make it smarter
 	private static long dumbCode() {
 		long t0 = System.nanoTime();
@@ -41,7 +65,7 @@ public class Problem4 {
 		}
 		long tf = System.nanoTime();
 		
-//		System.out.println(max);
+		System.out.println("N: " + max);
 		
 		return tf - t0;
 	}
