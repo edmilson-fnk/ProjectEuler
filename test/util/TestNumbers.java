@@ -6,11 +6,11 @@ import java.math.BigInteger;
 
 import org.junit.Assert;
 
-public class TestPrime {
+public class TestNumbers {
 
 	@Test
 	public void testEvenPrime() {
-		Assert.assertEquals(true, Prime.isPrime(new BigInteger("2")));
+		Assert.assertEquals(true, Numbers.isPrime(new BigInteger("2")));
 	}
 
 	/**
@@ -18,7 +18,7 @@ public class TestPrime {
 	 */
 	@Test
 	public void testBigPrime() {
-		Assert.assertEquals(true, Prime.isPrime(new BigInteger("15485867")));
+		Assert.assertEquals(true, Numbers.isPrime(new BigInteger("15485867")));
 	}
 	
 }

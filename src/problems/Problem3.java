@@ -2,7 +2,7 @@ package problems;
 
 import java.math.BigInteger;
 
-import util.Prime;
+import util.Numbers;
 
 public class Problem3 {
 
@@ -18,7 +18,7 @@ public class Problem3 {
 		
 		for (BigInteger i = new BigInteger("3"); i.compareTo(num) <= 0; i = i.add(new BigInteger("2"))) {
 			
-			if (num.mod(i).equals(BigInteger.ZERO) && Prime.isPrime(i)) {
+			if (num.mod(i).equals(BigInteger.ZERO) && Numbers.isPrime(i)) {
 				num = num.divide(i);
 				max = i;
 			}

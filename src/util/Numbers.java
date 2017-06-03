@@ -2,7 +2,7 @@ package util;
 
 import java.math.BigInteger;
 
-public class Prime {
+public class Numbers {
 
 	// TODO this is dumb code, make it smarter
 	public static boolean isPrime(BigInteger num) {
