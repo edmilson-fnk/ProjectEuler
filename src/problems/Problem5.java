@@ -1,5 +1,8 @@
 package problems;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem5 {
 
 	/**
@@ -11,6 +14,7 @@ public class Problem5 {
 	 * 
 	 */
 	public static void main(String[] args) {
+		Map<Integer, Integer> factors = new HashMap<Integer, Integer>();
 		
 	}
 	
