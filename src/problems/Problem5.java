@@ -1,7 +1,9 @@
 package problems;
 
-import java.util.HashMap;
+import java.math.BigInteger;
 import java.util.Map;
+
+import util.Factors;
 
 public class Problem5 {
 
@@ -14,8 +16,18 @@ public class Problem5 {
 	 * 
 	 */
 	public static void main(String[] args) {
-		Map<Integer, Integer> factors = new HashMap<Integer, Integer>();
+		BigInteger twenty = new BigInteger("20");
 		
+		showResult(twenty);
+	}
+
+	private static void showResult(BigInteger twenty) {
+		Map<BigInteger, BigInteger> start = Factors.decompose(BigInteger.ONE);
+		for (BigInteger i = new BigInteger("2"); i.compareTo(twenty) < 0 ; i = i.add(BigInteger.ONE)) {
+			start = Factors.mmc(start, Factors.decompose(i));
+		}
+		
+		System.out.println(Factors.compose(start));
 	}
 	
 }

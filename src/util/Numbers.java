@@ -1,8 +1,6 @@
 package util;
 
 import java.math.BigInteger;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Numbers {
 
@@ -11,6 +9,7 @@ public class Numbers {
 		BigInteger two = new BigInteger("2");
 		
 		if (num.compareTo(two) <= 0) return true;
+		if (num.mod(two).equals(BigInteger.ZERO)) return false;
 		
 		BigInteger division = num.divide(two);
 		
@@ -21,6 +20,17 @@ public class Numbers {
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * @return Gives you the lowest prime greater than i
+	 */
+	public static BigInteger nextPrime(BigInteger i) {
+		do {
+			i = i.add(BigInteger.ONE);
+		} while (!isPrime(i));
+		
+		return i;
 	}
 	
 	public static boolean isPalindrome(int num) {
@@ -41,15 +51,5 @@ public class Numbers {
 		
 		return true;
 	}
-	
-	public static Map<Integer, Integer> decompose(int num) {
-		Map<Integer, Integer> decomposition = new TreeMap<Integer, Integer>();
-		
-		while (num > 1) {
-			
-		}
-		
-		return decomposition;
-	}
-	
+
 }

@@ -13,6 +13,11 @@ public class TestNumbers {
 		Assert.assertTrue(Numbers.isPrime(new BigInteger("2")));
 	}
 
+	@Test
+	public void testEvenPrime4() {
+		Assert.assertFalse(Numbers.isPrime(new BigInteger("4")));
+	}
+
 	/**
 	 * www.bigprimes.net
 	 */
@@ -49,6 +54,26 @@ public class TestNumbers {
 	@Test
 	public void testNinePalindrome() {
 		Assert.assertTrue(Numbers.isPalindrome(999999999));
+	}
+
+	@Test
+	public void testNextPrime1() {
+		Assert.assertEquals(new BigInteger("2"), Numbers.nextPrime(BigInteger.ONE));
+	}
+
+	@Test
+	public void testNextPrime2() {
+		Assert.assertEquals(new BigInteger("3"), Numbers.nextPrime(new BigInteger("2")));
+	}
+
+	@Test
+	public void testNextPrime3() {
+		Assert.assertEquals(new BigInteger("5"), Numbers.nextPrime(new BigInteger("3")));
+	}
+
+	@Test
+	public void testNextPrimeBigNum() {
+		Assert.assertEquals(new BigInteger("7933"), Numbers.nextPrime(new BigInteger("7927")));
 	}
 	
 }
