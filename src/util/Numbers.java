@@ -26,8 +26,13 @@ public class Numbers {
 	 * @return Gives you the lowest prime greater than i
 	 */
 	public static BigInteger nextPrime(BigInteger i) {
+		BigInteger two = new BigInteger("2");
+		
+		if (i.compareTo(BigInteger.ONE) == 0)  return two;
+		if (i.compareTo(two) == 0) return new BigInteger("3");
+		
 		do {
-			i = i.add(BigInteger.ONE);
+			i = i.add(two);
 		} while (!isPrime(i));
 		
 		return i;
