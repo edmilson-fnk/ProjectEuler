@@ -54,26 +54,57 @@ public class Problem8 {
 				"71636269561882670428252483600823257530420752963450";
 		int length = 13;
 		
-		char[] digits = searchAll(sequence.toCharArray(), length);
-		showResult(digits);
+//		int times = 500;
+//		long t0, tf, mean = 0;
+//		
+//		for (int i = 0; i < times; i++) {
+//			t0 = System.nanoTime();
+//			char[] digits = searchMethod(sequence.toCharArray(), length);
+//			tf = System.nanoTime();
+//			mean += (tf-t0)/times;
+//		}
+//		
+//		System.out.println("Mean time: " + mean);
 		
+		char[] result = breakMethod(sequence, length);
+		showResult(result);
+	}
+
+	static BigInteger maxProd = BigInteger.ONE;
+	
+	private static char[] breakMethod(String sequence, int length) {
+		String[] splits = sequence.split("0");
+		BigInteger localMaxProd = BigInteger.ONE;
+		char[] maxDigits = new char[length];
 		
+		for (String split : splits) {
+			if (split.length() > length) {
+				char[] result = searchMethod(sequence.toCharArray(), length);
+				if (maxProd.compareTo(localMaxProd) > 0) {
+					System.arraycopy(result, 0, maxDigits, 0, result.length);
+					localMaxProd = maxProd;
+				}
+			}
+		}
+		
+		maxProd = localMaxProd;
+		
+		return maxDigits;
 	}
 
 	private static void showResult(char[] digits) {
 		for (char c : digits) {
 			System.out.print(c + " ");
 		}
-		System.out.println("Product: " + product(digits));
+		System.out.println("Product: " + product(digits) +" \n");
 	}
 
-	private static char[] searchAll(char[] sequence, int length) {
+	private static char[] searchMethod(char[] sequence, int length) {
 		// iterate to get the sequences with no zeros
 		int max = sequence.length - length - 1;
 		
 		char[] digits = new char[length];
 		char[] maxDigits = new char[length];
-		BigInteger maxProd = BigInteger.ONE;
 		
 		for (int i = 0; i < max; i++) {
 			for (int j = i; j < i + length; j++) {
