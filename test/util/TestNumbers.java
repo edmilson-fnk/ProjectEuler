@@ -75,5 +75,50 @@ public class TestNumbers {
 	public void testNextPrimeBigNum() {
 		Assert.assertEquals(new BigInteger("7933"), Numbers.nextPrime(new BigInteger("7927")));
 	}
+
+	@Test
+	public void testDigitalRoot1() {
+		Assert.assertEquals(1, Numbers.getDigitalRoot(100));
+	}
+
+	@Test
+	public void testDigitalRoot2() {
+		Assert.assertEquals(1, Numbers.getDigitalRoot(1999));
+	}
+
+	@Test
+	public void testDigitalRoot3() {
+		Assert.assertEquals(8, Numbers.getDigitalRoot(1934));
+	}
+
+	@Test
+	public void testDigitalRoot4() {
+		Assert.assertEquals(3, Numbers.getDigitalRoot(59934));
+	}
+
+	@Test
+	public void testPerfectSquare1() {
+		Assert.assertTrue(Numbers.isPerfectSquare(7*7));
+	}
+
+	@Test
+	public void testPerfectSquare2() {
+		Assert.assertTrue(Numbers.isPerfectSquare(9*9));
+	}
+
+	@Test
+	public void testPerfectSquare3() {
+		Assert.assertTrue(Numbers.isPerfectSquare(100*100));
+	}
+
+	@Test
+	public void testPerfectSquare4() {
+		Assert.assertFalse(Numbers.isPerfectSquare(1000*1001));
+	}
+
+	@Test
+	public void testPerfectSquare5() {
+		Assert.assertFalse(Numbers.isPerfectSquare(997*997 + 1));
+	}
 	
 }

@@ -57,4 +57,30 @@ public class Numbers {
 		return true;
 	}
 
+	public static boolean isPerfectSquare(int num) {
+		int end = num % 10;
+		if (end == 2 || end == 3 || end == 7 || end == 8) {
+			return false;
+		} else {
+			int root = getDigitalRoot(num);
+			if (root != 0 && root != 1 && root != 4 && root != 7) {
+				return false;
+			} else {
+				int sqrt = (int) Math.sqrt(num);
+				return num == sqrt*sqrt;
+			}
+		}
+	}
+
+	public static int getDigitalRoot(int num) {
+		int root = 0;
+		while (num > 0) {
+			root += num % 10;
+			num = num/10;
+			if (root >= 9) root -= 9;
+		}
+		
+		return root;
+	}
+	
 }
