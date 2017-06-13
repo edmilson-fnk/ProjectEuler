@@ -1,4 +1,4 @@
-package problems;
+package problems.problems01to09;
 
 public class Problem9 {
 
