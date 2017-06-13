@@ -20,6 +20,7 @@ public class Factors {
 	
 	public static Map<BigInteger, BigInteger> decompose(BigInteger num) {
 		Map<BigInteger, BigInteger> decomposition = new TreeMap<BigInteger, BigInteger>();
+//		decomposition.put(BigInteger.ONE, BigInteger.ONE);
 		
 		BigInteger i = BigInteger.ONE;
 		while (!num.equals(BigInteger.ONE)) {
