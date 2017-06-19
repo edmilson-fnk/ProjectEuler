@@ -15,7 +15,8 @@ public class Problem14 {
 
 	private static Map<BigInteger, BigInteger> sequence = new HashMap<BigInteger, BigInteger>();
 	private static Map<BigInteger, BigInteger> quantity = new HashMap<BigInteger, BigInteger>();
-	
+
+	// TODO can be improved by counting and sequencing at the same time.
 	public static void main(String[] args) {
 		BigInteger start = ONE;
 		BigInteger end = MILLION;
