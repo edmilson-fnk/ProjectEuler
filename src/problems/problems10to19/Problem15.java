@@ -7,9 +7,14 @@ public class Problem15 {
 	public static void main(String[] args) {
 		int max = 20;
 		Matrix paths = new Matrix(max + 1);
+		
+		long t0 = System.nanoTime();
+		
 		BigInteger qtt = path(paths, max, 0, 0);
 		
-		System.out.println(qtt);
+		long tf = System.nanoTime();
+		
+		System.out.println(qtt + " - " + (tf - t0));
 	}
 
 	private static BigInteger path(Matrix mat, int max, int i, int j) {
