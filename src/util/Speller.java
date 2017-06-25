@@ -78,7 +78,7 @@ public class Speller {
 			case 1: r.append(fromTenOn(unit)); break;
 			case 2: r.append("twenty"); break;
 			case 3: r.append("thirty"); break;
-			case 4: r.append("fourty"); break;
+			case 4: r.append("forty"); break;
 			case 5: r.append("fifty"); break;
 			case 6: r.append("sixty"); break;
 			case 7: r.append("seventy"); break;
