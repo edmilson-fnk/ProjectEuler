@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Speller {
 
 	public static void main(String[] args) {
-		System.out.println(spell(1500));
+		System.out.println(spell(1501));
 	}
 	
 	/**
@@ -21,11 +21,14 @@ public class Speller {
 		
 		for (int i = 0; i < result.length; i++) {
 			if (result.length - i > 3) {
-				list.add(greaterThanAHundred(Integer.valueOf(result[i]), "thousand"));
+				String thousand = greaterThanAHundred(Integer.valueOf(result[i]), "thousand");
+				if (thousand != null && !thousand.isEmpty()) list.add(thousand);
 			} else if (result.length - i > 2) {
-				list.add(greaterThanAHundred(Integer.valueOf(result[i]), "hundred"));
+				String hundred = greaterThanAHundred(Integer.valueOf(result[i]), "hundred");
+				if (hundred != null && !hundred.isEmpty()) list.add(hundred);
 			} else if (result.length - i > 1) {
-				list.add(dozens(Integer.valueOf(result[i]), Integer.valueOf(result[i+1])));
+				String dozens = dozens(Integer.valueOf(result[i]), Integer.valueOf(result[i+1]));
+				if (dozens != null && !dozens.isEmpty()) list.add(dozens);
 			}
 		}
 		

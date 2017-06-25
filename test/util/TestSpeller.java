@@ -51,6 +51,8 @@ public class TestSpeller {
 					{110, "one hundred and ten"},
 					{472, "four hundred and seventy two"},
 					{1500, "one thousand and five hundred"},
+					{1501, "one thousand, five hundred and one"},
+					{1015, "one thousand and fifteen"},
 					{9999, "nine thousand, nine hundred and ninety nine"}
 				}
 				);
