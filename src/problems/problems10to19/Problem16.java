@@ -1,5 +1,9 @@
 package problems.problems10to19;
 
+import java.math.BigInteger;
+
+import util.Numbers;
+
 public class Problem16 {
 
 	/**
@@ -9,7 +13,11 @@ public class Problem16 {
 	 * 
 	 */
 	public static void main(String[] args) {
+		BigInteger two = new BigInteger("2");
 		
+		BigInteger result = two.pow(1000);
+		
+		System.out.println(Numbers.sumDigits(result));
 	}
 	
 }

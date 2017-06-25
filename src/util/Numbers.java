@@ -83,4 +83,14 @@ public class Numbers {
 		return root;
 	}
 	
+	public static int sumDigits(BigInteger number) {
+		int sum = 0;
+		
+		for (Character c : number.toString().toCharArray()) {
+			sum += Integer.parseInt(c.toString());
+		}
+		
+		return sum;
+	}
+	
 }

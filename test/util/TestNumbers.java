@@ -120,5 +120,20 @@ public class TestNumbers {
 	public void testPerfectSquare5() {
 		Assert.assertFalse(Numbers.isPerfectSquare(997*997 + 1));
 	}
+
+	@Test
+	public void testSumDigits10() {
+		Assert.assertEquals(10, Numbers.sumDigits(new BigInteger("1009")));
+	}
+
+	@Test
+	public void testSumDigitsLower10() {
+		Assert.assertEquals(8, Numbers.sumDigits(new BigInteger("12311")));
+	}
+
+	@Test
+	public void testSumDigitsGreater10() {
+		Assert.assertEquals(13, Numbers.sumDigits(new BigInteger("123115")));
+	}
 	
 }
