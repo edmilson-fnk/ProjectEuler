@@ -25,6 +25,7 @@ public class Numbers {
 	/**
 	 * @return Gives you the lowest prime greater than i
 	 */
+	// TODO also dumb code, dynamic programming shoud work better
 	public static BigInteger nextPrime(BigInteger i) {
 		BigInteger two = new BigInteger("2");
 		
