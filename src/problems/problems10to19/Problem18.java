@@ -48,7 +48,7 @@ public interface Problem18 {
 	 * 
 	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		TheGraph graph = createGraph();
 		
 		graph.longestPath();
@@ -56,12 +56,16 @@ public interface Problem18 {
 		Utils.show(graph.rows());
 	}
 
-	public static TheGraph createGraph() throws IOException {
+	public static TheGraph createGraph() {
 		File data = new File(new File(".").getAbsolutePath() + "/src/resources/problem18.data");
 		
 		Supplier<Stream<Object>> sup = () -> {
-			try { return Stream.of(Files.lines(data.toPath()).toArray()); } 
-			catch (IOException e) { e.printStackTrace(); return null; }
+			try {
+				return Stream.of(Files.lines(data.toPath()).toArray());
+			} catch (IOException e) {
+				e.printStackTrace();
+				return null;
+			}
 		};
 		
 		TheGraph graph = new TheGraph((int) sup.get().count());
