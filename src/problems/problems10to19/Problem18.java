@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import util.graph.GraphTree;
+import util.Utils;
+import util.graph.TheGraph;
 
 public interface Problem18 {
 
@@ -47,22 +49,27 @@ public interface Problem18 {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		GraphTree graph = createGraph();
+		TheGraph graph = createGraph();
 		
 		graph.longestPath();
+		
+		Utils.show(graph.rows());
 	}
 
-	public static GraphTree createGraph() throws IOException {
+	public static TheGraph createGraph() throws IOException {
 		File data = new File(new File(".").getAbsolutePath() + "/src/resources/problem18.data");
 		
-		Stream<String> lines = Files.lines(data.toPath());
+		Supplier<Stream<Object>> sup = () -> {
+			try { return Stream.of(Files.lines(data.toPath()).toArray()); } 
+			catch (IOException e) { e.printStackTrace(); return null; }
+		};
 		
-		GraphTree graph = new GraphTree((int) lines.count());
+		TheGraph graph = new TheGraph((int) sup.get().count());
 		
-		lines.forEach(
+		sup.get().forEach(
 				(item) -> 
 					graph.insertRow(
-							Arrays.stream(item.split(" ")).map(s -> Integer.parseInt(s)).collect(Collectors.toList())
+							Arrays.stream(item.toString().split(" ")).map(s -> Integer.parseInt(s)).collect(Collectors.toList())
 							)
 				);
 		

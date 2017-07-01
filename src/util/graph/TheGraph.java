@@ -2,12 +2,12 @@ package util.graph;
 
 import java.util.Collection;
 
-public class GraphTree {
+public class TheGraph {
 
 	private int last;
-	public Integer[][] rows;
+	private Integer[][] rows;
 	
-	public GraphTree(int size) {
+	public TheGraph(int size) {
 		this.rows = new Integer[size][size];
 		this.last = 0;
 	}
@@ -20,6 +20,10 @@ public class GraphTree {
 		this.rows[last++] = nodes.toArray(new Integer[nodes.size()]);
 	}
 
+	public Integer[][] rows() {
+		return this.rows;
+	}
+	
 	public Integer[] longestPath() {
 		return null;
 	}
