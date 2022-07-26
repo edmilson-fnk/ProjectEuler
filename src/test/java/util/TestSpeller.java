@@ -12,8 +12,8 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(value = Parameterized.class)
 public class TestSpeller {
 
-	private int number;
-	private String spelled;
+	private final int number;
+	private final String spelled;
 	
 	public TestSpeller(int number, String spelled) {
 		this.number = number;
