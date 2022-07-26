@@ -1,11 +1,11 @@
-package problems.problems01to09;
+package problems.problems01to10;
 
 import java.math.BigInteger;
 
 public class Problem8 {
 
 	/**
-	 * The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
+	 * The four adjacent digits in the 1000-digit number that have the greatest product are 9 ï¿½ 9 ï¿½ 8 ï¿½ 9 = 5832.
 	 * 
 	 * 73167176531330624919225119674426574742355349194934
 	 * 96983520312774506326239578318016984801869478851843
