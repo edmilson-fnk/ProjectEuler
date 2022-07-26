@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import util.Utils;
 import util.graph.TheGraph;
 
-public interface Problem18 {
+public class Problem18 {
 
 	/**
 	 * By starting at the top of the triangle below and moving to adjacent numbers on the row below, 
@@ -45,20 +45,36 @@ public interface Problem18 {
 	 * NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route. 
 	 * However, Problem 67, is the same challenge with a triangle containing one-hundred rows; it cannot 
 	 * be solved by brute force, and requires a clever method! ;o)
-	 * 
-	 * @throws IOException 
 	 */
 	public static void main(String[] args) {
 		TheGraph graph = createGraph();
 		
-		graph.longestPath();
-		
 		Utils.show(graph.rows());
+
+		int bF = bruteForce(graph);
+		System.out.println("\nBrute force: " + bF);
+	}
+
+	public static int bruteForce(TheGraph graph) {
+		Integer[][] pyramid = graph.rows();
+
+		return maximumSum(0, 0, pyramid);
+	}
+
+	public static int maximumSum(int i, int j, Integer[][] pyramid) {
+		if (i == pyramid.length - 1) {
+			return pyramid[i][j];
+		}
+
+		Integer currentElement = pyramid[i][j];
+		int leftSum = maximumSum(i + 1, j, pyramid);
+		int rightSum = maximumSum(i + 1, j + 1, pyramid);
+		return currentElement + Math.max(leftSum, rightSum);
 	}
 
 	public static TheGraph createGraph() {
-		File data = new File(new File(".").getAbsolutePath() + "/src/resources/problem18.data");
-		
+		File data = new File(new File(".").getAbsolutePath() + "/src/main/resources/problem18.data");
+
 		Supplier<Stream<Object>> sup = () -> {
 			try {
 				return Stream.of(Files.lines(data.toPath()).toArray());
@@ -71,11 +87,11 @@ public interface Problem18 {
 		TheGraph graph = new TheGraph((int) sup.get().count());
 		
 		sup.get().forEach(
-				(item) -> 
-					graph.insertRow(
-							Arrays.stream(item.toString().split(" ")).map(s -> Integer.parseInt(s)).collect(Collectors.toList())
-							)
-				);
+			(item) ->
+				graph.insertRow(
+					Arrays.stream(item.toString().split(" ")).map(Integer::parseInt).collect(Collectors.toList())
+				)
+			);
 		
 		return graph;
 	}
