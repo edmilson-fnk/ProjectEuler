@@ -5,19 +5,15 @@ import java.util.Collection;
 public class TheGraph {
 
 	private int last;
-	private Integer[][] rows;
+	private final Integer[][] rows;
 	
 	public TheGraph(int size) {
 		this.rows = new Integer[size][size];
 		this.last = 0;
 	}
 	
-	public void insertRow(Integer... nodes) {
-		this.rows[last++] = nodes;
-	}
-
 	public void insertRow(Collection<Integer> nodes) {
-		this.rows[last++] = nodes.toArray(new Integer[nodes.size()]);
+		this.rows[last++] = nodes.toArray(new Integer[0]);
 	}
 
 	public Integer[][] rows() {

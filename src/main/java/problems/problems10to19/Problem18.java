@@ -51,8 +51,17 @@ public class Problem18 {
 		
 		Utils.show(graph.rows());
 
+		long t0 = System.nanoTime();
 		int bF = bruteForce(graph);
+		long tf = System.nanoTime();
 		System.out.println("\nBrute force: " + bF);
+		System.out.println("Time to run: " + (tf - t0));
+
+		t0 = System.nanoTime();
+		int dP = dynamicProgramming(graph);
+		tf = System.nanoTime();
+		System.out.println("\nDynamic programming: " + dP);
+		System.out.println("Time to run: " + (tf - t0));
 	}
 
 	public static int bruteForce(TheGraph graph) {
@@ -70,6 +79,34 @@ public class Problem18 {
 		int leftSum = maximumSum(i + 1, j, pyramid);
 		int rightSum = maximumSum(i + 1, j + 1, pyramid);
 		return currentElement + Math.max(leftSum, rightSum);
+	}
+
+	public static int dynamicProgramming(TheGraph graph) {
+		Integer[][] pyramid = graph.rows();
+
+		Integer[][] supportMatrix = new Integer[pyramid.length][pyramid[pyramid.length - 1].length];
+		for (Integer[] matrix : supportMatrix) {
+			Arrays.fill(matrix, -1);
+		}
+		return maximumSumWithSupport(0, 0, pyramid, supportMatrix);
+	}
+
+	public static int maximumSumWithSupport(int i, int j, Integer[][] pyramid, Integer[][] supportMatrix) {
+		if (i == pyramid.length - 1) {
+			return pyramid[i][j];
+		}
+
+		if (supportMatrix[i][j] > -1) {
+			return supportMatrix[i][j];
+		}
+
+		Integer currentElement = pyramid[i][j];
+		int leftSum = maximumSum(i + 1, j, pyramid);
+		int rightSum = maximumSum(i + 1, j + 1, pyramid);
+
+		int maxSum = currentElement + Math.max(leftSum, rightSum);
+		supportMatrix[i][j] = maxSum;
+		return maxSum;
 	}
 
 	public static TheGraph createGraph() {
