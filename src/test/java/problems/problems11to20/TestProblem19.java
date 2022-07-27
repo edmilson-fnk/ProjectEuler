@@ -25,4 +25,14 @@ public class TestProblem19 {
         Assert.assertTrue(Problem19.isLeapYear(2000));
     }
 
+    @Test
+    public void testFirstSundayAfter0() {
+        Assert.assertEquals(0, Problem19.getFirstSundayAfter(0));
+    }
+
+    @Test
+    public void testFirstSundayAfter6() {
+        Assert.assertEquals(6 + 7, Problem19.getFirstSundayAfter(7));
+    }
+
 }
