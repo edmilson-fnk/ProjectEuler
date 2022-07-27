@@ -31,7 +31,7 @@ public class Problem12 {
 	 */
 	public static void main(String[] args) {
 		// this is extremely slow, it must be improved by the use of dynamic programming
-		bruteForce(new BigInteger("100"));
+		bruteForce(new BigInteger("500"));
 	}
 
 	private static void bruteForce(BigInteger limit) {
