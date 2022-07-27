@@ -44,7 +44,6 @@ public class Problem19 {
             if (i < firstOfMonth.length) {
                 firstOfMonth[i] = true;
             } else {
-                System.out.println("broke");
                 break;
             }
         }
@@ -60,8 +59,6 @@ public class Problem19 {
         int firstMonthSundays = 0;
         for (int i = 0; i < numDays; i++) {
             if (itsSunday[i] && firstOfMonth[i]) {
-                System.out.println(itsSunday[i]);
-                System.out.println(firstOfMonth[i]);
                 firstMonthSundays++;
             }
         }
